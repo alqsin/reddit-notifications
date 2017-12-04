@@ -2,3 +2,5 @@ auth.ini
 notification_settings.txt
 push_history.txt
 parsed_submissions.txt
+__pycache__
+*log.txt
