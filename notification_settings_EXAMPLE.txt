@@ -1,3 +1,6 @@
+SUBREDDIT_NAME
+SEARCH TERMS (each query separated by , use + to search individual words)
+SEARCH TYPE ("title" or "author")
 space
 spacemodbot
 author
