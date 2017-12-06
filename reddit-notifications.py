@@ -7,7 +7,7 @@ from collections import namedtuple
 import sys,os
 import re
 import configparser
-
+import logging
 
 ##To-fix:
 ##(1) can't search one subreddit using multiple search types
@@ -190,10 +190,15 @@ if __name__ == '__main__':
 		for notification in all_notifications:
 			check_one_subreddit(notification)
 	except Exception as e:
+		print("Error caught, trying to log to file.")
+		LOG_FILENAME = "tmp/error_log.txt"
+		logging.basicConfig(filename=LOG_FILENAME,level=logging.DEBUG)
+		logging.exception("Error occurred, program exiting, printing error message.")
 		error_push = pushover.pushover_push(message='Unknown error occurred; please check script.',title='Reddit Notifications Error')
 		if not pushover.check_matching_push(error_push,match_timestamp=False):
 			error_push.send_push()
 			error_push.print_status()
 		else:
 			print("Unknown error occurred. Sent a push recently, didn't bother sending another.")
-		print(logging.exception("Error occurred, program exiting, printing error message."))
+		raise
+	print("Finished checking, exiting program.")
