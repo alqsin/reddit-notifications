@@ -196,5 +196,4 @@ if __name__ == '__main__':
 			error_push.print_status()
 		else:
 			print("Unknown error occurred. Sent a push recently, didn't bother sending another.")
-		print("Error occurred, program exiting.")
-		raise
+		print(logging.exception("Error occurred, program exiting, printing error message."))
