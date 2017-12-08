@@ -167,7 +167,11 @@ def read_notification_settings():
 #checks search terms in one subreddit, sends notifications for matching posts
 def check_one_subreddit(notification):
 	#print("Checking subreddit {}, searching by {}".format(notification.subreddit,notification.search_type))
-	new_posts = get_reddit_posts(notification.subreddit)
+	try:
+		new_posts = get_reddit_posts(notification.subreddit)
+	except Exception:
+		print("Failed to get reddit posts.")
+		raise
 	for post in new_posts:
 		if notification.search_type == 'title':
 			post_val_to_search = post.post_title
