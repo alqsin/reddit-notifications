@@ -111,7 +111,7 @@ def get_reddit_posts(subreddit_name,cutoff_time=(datetime.utcnow()-timedelta(hou
 	parsed_submissions = read_parsed_submissions()
 	newly_parsed = []
 
-	for submission in subreddit.new(limit=25):
+	for submission in subreddit.new(limit=NUMBER_NEW_TO_GET):
 		post_time = get_time_from_stamp(submission.created) #submission.created returns timestamp in utc(!)
 		post_title = submission.title
 		post_id = submission.fullname
@@ -187,6 +187,9 @@ def check_one_subreddit(notification):
 #checks every subreddit using notification_settings.txt
 #runs ONE TIME and exits
 if __name__ == '__main__':
+#global values
+NUMBER_NEW_TO_GET = 10
+
 	print(datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S'))
 	try:
 		reddit = praw.Reddit(**read_reddit_auth())
