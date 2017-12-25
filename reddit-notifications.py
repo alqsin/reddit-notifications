@@ -187,8 +187,8 @@ def check_one_subreddit(notification):
 #checks every subreddit using notification_settings.txt
 #runs ONE TIME and exits
 if __name__ == '__main__':
-#global values
-NUMBER_NEW_TO_GET = 10
+	#global values
+	NUMBER_NEW_TO_GET = 10
 
 	print(datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S'))
 	try:
