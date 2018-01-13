@@ -137,7 +137,8 @@ def parse_search_term(search_term):
 
 #given a list of regex-compatible strings, searches word and returns true if all strings are matched
 #ALWAYS IGNORES CASE, even when trying to search user
-def match_string(vals_to_search,word):
+def match_string(search_term,word):
+	vals_to_search = parse_search_term(search_term)
 	for val in vals_to_search:
 		pattern = re.compile(val,re.IGNORECASE)
 		if pattern.search(word) is None:
@@ -179,7 +180,7 @@ def check_one_subreddit(notification):
 			post_val_to_search = post.post_author.name
 		else:
 			raise ValueError("Invalid search type for subreddit {}".format(notification.subreddit))
-		if any([match_string(parse_search_term(search_term),post_val_to_search) for search_term in notification.search_term_list]):
+		if any([match_string(search_term,post_val_to_search) for search_term in notification.search_term_list]):
 			print("Found match in subreddit {}, sending push...".format(notification.subreddit))
 			new_push = pushover.pushover_push(message=post.post_title,title="New post of interest in /r/{} by /u/{}".format(notification.subreddit,post.post_author))
 			new_push.send_push()

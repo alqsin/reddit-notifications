@@ -5,3 +5,5 @@ parsed_submissions.txt
 __pycache__
 *log.txt
 tmp/*
+*test.py
+!/EXAMPLES/*
