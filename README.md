@@ -27,4 +27,5 @@ TO DO:
 2. Re-format notification_settings.txt input  
 3. Support multiple pushover targets and/or multiple users  
 4. Add better error handling  
-5. Enable permanent/long-term logging    
+5. Enable permanent/long-term logging  
+6. Ignore non-alphanumeric characters
