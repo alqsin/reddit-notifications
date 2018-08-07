@@ -1,3 +1,5 @@
+Please see https://github.com/alqsin/reddit-discord-notifier for a more convenient way of receiving notifications for new Reddit posts.
+
 # reddit-notifications
 Sends notifications for new reddit posts based on search query. Uses Pushover and reddit.
 
